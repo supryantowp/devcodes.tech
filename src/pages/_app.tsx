@@ -1,6 +1,7 @@
 import '@/styles/app.css'
 
 import { Box, ChakraProvider, Stack } from '@chakra-ui/react'
+import { AppProps } from 'next/dist/next-server/lib/router/router'
 import Head from 'next/head'
 import { DefaultSeo } from 'next-seo'
 
@@ -9,8 +10,9 @@ import Navbar from '@/components/navbar'
 import theme from '@/theme'
 import siteConfig from '~/site-config'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function MyApp({ Component, pageProps, router }: any) {
+export default function MyApp(props: AppProps) {
+  const { Component, pageProps, router } = props
+
   return (
     <>
       <Head>
@@ -25,7 +27,7 @@ export default function MyApp({ Component, pageProps, router }: any) {
       />
 
       <ChakraProvider resetCSS theme={theme}>
-        <Stack justify='space-between' minH='100vh' spacing={0}>
+        <Stack minH='100vh' justify='space-between' spacing={0}>
           <Navbar />
           <Box as='main' alignItems='start'>
             <Component {...pageProps} />

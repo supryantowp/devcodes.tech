@@ -4,8 +4,8 @@ import { NextSeo } from 'next-seo'
 const Home = () => {
   return (
     <>
-      <Stack alignItems='center'>
-        <NextSeo title='Home' titleTemplate='%s' />
+      <NextSeo title='Home' titleTemplate='%s' />
+      <Stack justify='start'>
         <h1>Hi</h1>
       </Stack>
     </>
