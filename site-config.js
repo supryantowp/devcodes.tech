@@ -1,11 +1,12 @@
 // eslint-disable-next-line no-undef
 module.exports = {
-  title: 'Necuts',
-  description: 'Nextjs ChakraUI Typescript. Starter project',
-  url: 'https://necuts.supryantowp.tech',
-  themeColor: '#1a202c',
+  title: 'Devcodes',
+  description:
+    'Komunitas Programmer Dari Jurusan Software Engineering Sekolah Menengah Kejuruan 1 Ciamis !',
+  url: 'https://devcodes.tech',
   socials: {
-    GitHub: 'https://github.com/supryantowp',
-    Twitter: 'https://twitter.com/supryantowp',
+    GitHub: 'https://github.com/devcode',
+    Twitter: 'https://twitter.com/devcode',
   },
+  themeColor: '#1a202c',
 }
