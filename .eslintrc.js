@@ -20,6 +20,13 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'simple-import-sort'],
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        args: 'all',
+        argsIgnorePattern: '^_',
+      },
+    ],
     'react/react-in-jsx-scope': 'off',
     'simple-import-sort/imports': 'error',
   },

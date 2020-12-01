@@ -1,11 +1,10 @@
-import '@/styles/app.css'
-
 import { Box, ChakraProvider, Stack } from '@chakra-ui/react'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
 import Head from 'next/head'
 import { DefaultSeo } from 'next-seo'
 
 import Footer from '@/components/footer'
+import MobileDrawer from '@/components/mobile-drawer'
 import Navbar from '@/components/navbar'
 import theme from '@/theme'
 import siteConfig from '~/site-config'
@@ -26,7 +25,7 @@ export default function MyApp(props: AppProps) {
         canonical={siteConfig.url + (router.asPath || '')}
       />
 
-      <ChakraProvider resetCSS theme={theme}>
+      <ChakraProvider theme={theme}>
         <Stack minH='100vh' justify='space-between' spacing={0}>
           <Navbar />
           <Box as='main' alignItems='start'>
@@ -34,6 +33,8 @@ export default function MyApp(props: AppProps) {
           </Box>
           <Footer />
         </Stack>
+
+        <MobileDrawer />
       </ChakraProvider>
     </>
   )
