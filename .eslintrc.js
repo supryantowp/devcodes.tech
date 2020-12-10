@@ -20,14 +20,12 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'simple-import-sort'],
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        args: 'all',
-        argsIgnorePattern: '^_',
-      },
-    ],
+    '@typescript-eslint/no-shadow': ['off'],
+    '@typescript-eslint/no-unused-vars': ['warn'],
+    'no-shadow': ['off'],
     'react/react-in-jsx-scope': 'off',
+    'react/jsx-props-no-spreading': ['off'],
+    'react/prop-types': ['off'],
     'simple-import-sort/imports': 'error',
   },
 }

@@ -6,7 +6,7 @@ import { DefaultSeo } from 'next-seo'
 import Footer from '@/components/footer'
 import MobileDrawer from '@/components/mobile-drawer'
 import Navbar from '@/components/navbar'
-import theme from '@/theme'
+import theme from '@/lib/theme'
 import siteConfig from '~/site-config'
 
 export default function MyApp(props: AppProps) {

@@ -16,7 +16,7 @@ export default class Document extends NextDocument {
           <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon' />
 
           <link
-            href='https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap'
             rel='stylesheet'
           />
         </Head>

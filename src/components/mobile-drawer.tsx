@@ -10,12 +10,11 @@ import {
   IconButton,
   Link,
   Stack,
-  useColorMode,
   useDisclosure,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import * as React from 'react'
-import { FaBars, FaMoon, FaSun, FaTimes } from 'react-icons/fa'
+import { FaBars, FaTimes } from 'react-icons/fa'
 
 import { useSocials } from '@/hook/app'
 import routes from '@/routes'
@@ -23,7 +22,6 @@ import siteConfig from '~/site-config'
 
 const MobileDrawer = () => {
   const { isOpen, onClose, onToggle } = useDisclosure()
-  const { toggleColorMode, colorMode } = useColorMode()
   const btnRef = React.useRef()
   const socials = useSocials()
 
@@ -32,12 +30,12 @@ const MobileDrawer = () => {
       <Box bottom={0} d={{ md: 'none' }} p={8} pos='fixed' right={0} zIndex={1}>
         <IconButton
           aria-label='open-menu'
-          colorScheme='purple'
           icon={<Icon as={isOpen ? FaTimes : FaBars} />}
           onClick={onToggle}
           ref={btnRef}
           isRound
           size='lg'
+          colorScheme='navy'
         />
       </Box>
 
@@ -96,18 +94,6 @@ const MobileDrawer = () => {
                   variant='link'
                 />
               ))}
-              <IconButton
-                aria-label='toggle dark mode'
-                color='currentColor'
-                icon={
-                  <Icon
-                    as={colorMode === 'light' ? FaSun : FaMoon}
-                    boxSize={5}
-                  />
-                }
-                onClick={toggleColorMode}
-                variant='link'
-              />
             </DrawerFooter>
           </DrawerContent>
         </DrawerOverlay>
