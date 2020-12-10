@@ -10,7 +10,7 @@ const Navbar = () => {
   const socials = useSocials()
 
   return (
-    <HStack as='nav' fontSize='md' px={{ base: 10, md: 20 }} py={2} spacing={8}>
+    <HStack as='nav' fontSize='md' px={{ base: 5, md: 20 }} py={2} spacing={8}>
       <NextLink href='/'>
         <Link fontWeight='bold' href='/' variant='link'>
           {siteConfig.title}

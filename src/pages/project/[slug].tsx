@@ -40,7 +40,7 @@ const Projects = ({ subscription }): JSX.Element => {
 
       <SimpleGrid
         columns={{ base: 1, md: 2 }}
-        px={{ base: 10, md: 20 }}
+        px={{ base: 5, md: 20 }}
         spacing={4}
         alignItems='start'
       >
@@ -74,7 +74,7 @@ const Projects = ({ subscription }): JSX.Element => {
         </Box>
       </SimpleGrid>
 
-      <Box mt={2} px={{ base: 10, md: 20 }} maxW='960px'>
+      <Box mt={2} px={{ base: 5, md: 20 }} maxW='960px'>
         <Stack
           align='center'
           direction={{ base: 'column', md: 'row' }}

@@ -51,7 +51,7 @@ const Project = () => {
       </Box>
 
       <SimpleGrid
-        px={{ base: 10, md: 20 }}
+        px={{ base: 5, md: 20 }}
         columns={{ base: 1, md: 3 }}
         spacing={6}
       >
