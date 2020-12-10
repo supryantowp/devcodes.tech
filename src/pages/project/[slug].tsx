@@ -44,15 +44,17 @@ const Projects = ({ subscription }): JSX.Element => {
         spacing={4}
         alignItems='start'
       >
-        <DatoImage
-          data={project.coverImage.responsiveImage}
-          fadeInDuration={1000}
-          style={{
-            borderRadius: '5px',
-            border: '20px',
-            background: 'gray',
-          }}
-        />
+        <Box w={{ base: 'auto', md: '750px' }}>
+          <DatoImage
+            data={project.coverImage.responsiveImage}
+            fadeInDuration={1000}
+            style={{
+              borderRadius: '5px',
+              border: '20px',
+              background: 'gray',
+            }}
+          />
+        </Box>
 
         <Box p={4} borderRadius='md' border='1px' borderColor='gray.600'>
           <Heading as='h5'>Tech Stack</Heading>
@@ -78,7 +80,7 @@ const Projects = ({ subscription }): JSX.Element => {
         <Stack
           align='center'
           direction={{ base: 'column', md: 'row' }}
-          spacing={4}
+          spacing={{ base: 0, md: 4 }}
         >
           <Heading>{project.title}</Heading>
           <HStack>
