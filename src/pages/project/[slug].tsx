@@ -48,8 +48,6 @@ const Projects = ({ subscription }): JSX.Element => {
           data={project.coverImage.responsiveImage}
           fadeInDuration={1000}
           style={{
-            width: '800px',
-            height: '400px',
             borderRadius: '5px',
             border: '20px',
             background: 'gray',
