@@ -15,3 +15,7 @@ html::-webkit-scrollbar {
   background-color: #270746;
   width: 0.5rem;
 }
+
+.hero-image {
+  border-radius: 100%;
+}

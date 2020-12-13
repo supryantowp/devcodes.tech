@@ -1,4 +1,5 @@
 import { Box, Heading, Image, Stack, Text, VStack } from '@chakra-ui/react'
+import NextImage from 'next/image'
 import { NextSeo } from 'next-seo'
 import React from 'react'
 
@@ -21,11 +22,13 @@ const Home = () => {
           w='190px'
           minW='190px'
         >
-          <Image
+          <NextImage
             src='/images/logo.jpeg'
-            borderRadius='full'
-            objectFit='cover'
-            boxSize='180px'
+            width='180px'
+            height='180px'
+            layout='fixed'
+            className='hero-image'
+            alt='hero image'
           />
         </Box>
         <VStack

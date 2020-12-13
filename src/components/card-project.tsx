@@ -27,6 +27,7 @@ const CardProject = (props: CardProjectProps) => {
       px={4}
       textAlign='center'
       transition='background-color 150ms ease'
+      spacing={{ base: 4, md: 2 }}
     >
       <Heading fontSize='2xl' variant='link'>
         {props.title}
@@ -36,7 +37,7 @@ const CardProject = (props: CardProjectProps) => {
         _groupHover={{ transform: 'translateY(-12px)' }}
         transition='transform 150ms ease'
       >
-        <DatoImage data={props.image} />
+        <DatoImage fadeInDuration={1000} data={props.image} />
       </Wrap>
     </Stack>
   )
