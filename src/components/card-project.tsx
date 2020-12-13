@@ -1,8 +1,4 @@
 import { Heading, Image, Stack, Text } from '@chakra-ui/react'
-import { Image as DatoImage, ResponsiveImageType } from 'react-datocms'
-
-import { TechStacks } from '@/query'
-import styles from '@/styles/card-project.module.css'
 
 interface CardProjectProps {
   image: string
@@ -40,6 +36,7 @@ const CardProject = (props: CardProjectProps) => {
         _groupHover={{ transform: 'translateY(-12px)' }}
         transition='transform 150ms ease'
         src={props.image}
+        htmlHeight={300}
       />
     </Stack>
   )
