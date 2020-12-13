@@ -1,7 +1,8 @@
-import { Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { Heading, Stack, Text, Wrap } from '@chakra-ui/react'
+import { Image as DatoImage, ResponsiveImageType } from 'react-datocms'
 
 interface CardProjectProps {
-  image: string
+  image: ResponsiveImageType
   slug: string
   title: string
   url: string
@@ -31,13 +32,12 @@ const CardProject = (props: CardProjectProps) => {
         {props.title}
       </Heading>
       <Text color='gray.500'>{props.techStack}</Text>
-      <Image
-        alt={props.title}
+      <Wrap
         _groupHover={{ transform: 'translateY(-12px)' }}
         transition='transform 150ms ease'
-        src={props.image}
-        htmlHeight={300}
-      />
+      >
+        <DatoImage data={props.image} />
+      </Wrap>
     </Stack>
   )
 }

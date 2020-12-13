@@ -16,7 +16,10 @@ const Project = () => {
 
   return (
     <>
-      <NextSeo title='Project' description='Project kelas' />
+      <NextSeo
+        title='Project'
+        description='Kumpulan hasil karya murid-murid kelas RPL (SERVER)'
+      />
 
       {error && (
         <div>
@@ -39,7 +42,7 @@ const Project = () => {
             data.allProjects.map((projects) => (
               <CardProject
                 key={projects.id}
-                image={projects.coverImage.url}
+                image={projects.coverImage.responsiveImage}
                 slug={projects.slug}
                 title={projects.title}
                 url={projects.url}

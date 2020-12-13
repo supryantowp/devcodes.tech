@@ -3,7 +3,7 @@ import '@/styles/app.css'
 import { Box, ChakraProvider, Stack } from '@chakra-ui/react'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
 import Head from 'next/head'
-import { DefaultSeo } from 'next-seo'
+import { DefaultSeo, SocialProfileJsonLd } from 'next-seo'
 
 import Footer from '@/components/footer'
 import MobileDrawer from '@/components/mobile-drawer'
@@ -25,6 +25,35 @@ export default function MyApp(props: AppProps) {
         titleTemplate={`%s · ${siteConfig.title}`}
         description={siteConfig.description}
         canonical={siteConfig.url + (router.asPath || '')}
+        openGraph={{
+          title: siteConfig.title,
+          description: siteConfig.description,
+          type: 'website',
+          site_name: siteConfig.title,
+          images: [
+            {
+              url: `${siteConfig.url}/images/logo.jpeg`,
+              width: 1024,
+              height: 512,
+              alt: siteConfig.title,
+            },
+          ],
+        }}
+        twitter={{
+          handle: '@devcodes',
+          site: '@devcodes',
+          cardType: 'summary_large_image',
+        }}
+      />
+
+      <SocialProfileJsonLd
+        type='Organization'
+        name={siteConfig.title}
+        url={siteConfig.url}
+        sameAs={[
+          'https://www.instagram.com/official_server/',
+          'https://www.github.com/devcode',
+        ]}
       />
 
       <ChakraProvider theme={theme}>
