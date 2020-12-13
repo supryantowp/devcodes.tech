@@ -1,0 +1,8 @@
+.Image {
+  transition: transform 150ms ease;
+  height: '100%';
+}
+
+.Image:hover {
+  transform: translateY(-10px);
+}

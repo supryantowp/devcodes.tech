@@ -1,4 +1,4 @@
-import { HStack, Icon, IconButton, Link } from '@chakra-ui/react'
+import { Heading, HStack, Icon, IconButton, Link } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import React from 'react'
 import siteConfig from 'site-config'
@@ -10,10 +10,20 @@ const Navbar = () => {
   const socials = useSocials()
 
   return (
-    <HStack as='nav' fontSize='md' px={{ base: 5, md: 20 }} py={2} spacing={8}>
+    <HStack
+      bg='navy.800'
+      borderBottom='2px'
+      borderColor='navy.300'
+      as='nav'
+      fontSize='md'
+      px={{ base: 5, md: '7rem' }}
+      py={2}
+      spacing={8}
+      mb={8}
+    >
       <NextLink href='/'>
-        <Link fontWeight='bold' href='/' variant='link'>
-          {siteConfig.title}
+        <Link href='/' variant='link'>
+          <Heading fontSize='xl'>{siteConfig.title}</Heading>
         </Link>
       </NextLink>
 

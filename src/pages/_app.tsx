@@ -1,3 +1,5 @@
+import '@/styles/app.css'
+
 import { Box, ChakraProvider, Stack } from '@chakra-ui/react'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
 import Head from 'next/head'
@@ -26,7 +28,7 @@ export default function MyApp(props: AppProps) {
       />
 
       <ChakraProvider theme={theme}>
-        <Stack minH='100vh' justify='space-between' spacing={0}>
+        <Stack justify='space-between' minH='100vh' spacing={0}>
           <Navbar />
           <Box as='main' alignItems='start'>
             <Component {...pageProps} />

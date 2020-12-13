@@ -4,7 +4,7 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        backgroundColor: 'gray.900',
+        backgroundColor: 'navy.900',
         color: 'navy.50',
         lineHeight: 'base',
         transition: 'background-color 0.2s',
@@ -36,6 +36,13 @@ const theme = extendTheme({
 
   components: {
     Link: {
+      variants: {
+        link: {
+          color: 'navy.300',
+        },
+      },
+    },
+    Heading: {
       variants: {
         link: {
           color: 'navy.300',

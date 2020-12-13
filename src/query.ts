@@ -24,18 +24,17 @@ export const query = `
       }
     }
 
-    allProjects: allProjects(first: $first, orderBy: createdAt_DESC) {
-      id
-      title
-      slug
-      excerpt
-      demo
-      sourceCode
+    allProjects: allProjects(first: $first, orderBy: createdAt_ASC) {
       coverImage {
-        responsiveImage(imgixParams: { fit: crop, ar: "16:9", w:750, auto: format }) {
+        url
+        responsiveImage {
           ${RESPONSIVE_IMAGE_FRAGMENT}
         }
       }
+      title
+      slug
+      url
+      techStack
     }
   }
 `
@@ -50,16 +49,7 @@ export const queryProject = `
       demo
       sourceCode
       content
-      techStacks: {
-        id
-        source
-        name
-        icon: {
-          responsiveImage(imgixParams: { fit:crop, ar: "2:2", w:30, auto:format }) {
-            ${RESPONSIVE_IMAGE_FRAGMENT}
-          }
-        }
-      }
+      tech_stack
       coverImage: {
         responsiveImage(imgixParams: { fit:crop, ar: "16:9", w:750, auto:format }) {
           ${RESPONSIVE_IMAGE_FRAGMENT}
@@ -69,22 +59,19 @@ export const queryProject = `
   }
 `
 
+export type TechStacks = {
+  id: string
+  name: string
+}
+
 export type Projects = {
   id: string
   title: string
   slug: string
-  excerpt: string
-  demo: string
-  sourceCode: string
-  techStacks: {
-    id: string
-    source: string
-    name: string
-    icon: {
-      responsiveImage: ResponsiveImageType
-    }
-  }
+  url: string
+  techStack: string
   coverImage: {
+    url: string
     responsiveImage: ResponsiveImageType
   }
 }

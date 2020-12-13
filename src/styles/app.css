@@ -1,3 +1,17 @@
-* {
-  -webkit-tap-highlight-color: transparent;
+html {
+  scrollbar-color: #9035e3 #270746;
+}
+
+body {
+  background-color: #270746;
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #761cca;
+}
+
+html::-webkit-scrollbar {
+  background-color: #270746;
+  width: 0.5rem;
 }
