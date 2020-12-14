@@ -1,16 +1,17 @@
-import { Box, Heading, SimpleGrid, Stack, Text } from '@chakra-ui/react'
+import { Heading, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import { useQuerySubscription } from 'react-datocms'
 
 import CardProject from '@/components/card-project'
-import { query, QueryResponseType, QueryVariables } from '@/query'
+import { QueryAllProject } from '@/generated/query'
+import { QueryResponseType, QueryVariables } from '@/generated/types'
 
 const Project = () => {
   const { error, data } = useQuerySubscription<
     QueryResponseType,
     QueryVariables
   >({
-    query,
+    query: QueryAllProject,
     token: process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN,
   })
 
@@ -31,8 +32,15 @@ const Project = () => {
         </div>
       )}
 
-      <Box px={{ base: 5, md: 20 }}>
-        <Stack textAlign='center' mb={12}>
+      <Stack
+        maxW='6xl'
+        mx='auto'
+        borderRadius='md'
+        bgColor='navy.800'
+        spacing={6}
+        p={8}
+      >
+        <Stack>
           <Heading>Semua Project</Heading>
           <Text>Kumpulan hasil karya murid-murid kelas RPL (SERVER)</Text>
         </Stack>
@@ -43,14 +51,13 @@ const Project = () => {
               <CardProject
                 key={projects.id}
                 image={projects.coverImage.responsiveImage}
-                slug={projects.slug}
                 title={projects.title}
                 url={projects.url}
                 techStack={projects.techStack}
               />
             ))}
         </SimpleGrid>
-      </Box>
+      </Stack>
     </>
   )
 }

@@ -1,6 +1,7 @@
 import '@/styles/app.css'
 
-import { Box, ChakraProvider, Stack } from '@chakra-ui/react'
+import { Box, BoxProps, ChakraProvider, Stack } from '@chakra-ui/react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
 import Head from 'next/head'
 import { DefaultSeo, SocialProfileJsonLd } from 'next-seo'
@@ -10,6 +11,8 @@ import MobileDrawer from '@/components/mobile-drawer'
 import Navbar from '@/components/navbar'
 import theme from '@/lib/theme'
 import siteConfig from '~/site-config'
+
+const MotionBox = motion.custom<BoxProps>(Box)
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps, router } = props
@@ -57,14 +60,27 @@ export default function MyApp(props: AppProps) {
       />
 
       <ChakraProvider theme={theme}>
-        <Stack justify='space-between' minH='100vh' spacing={0}>
+        <Stack minH='100vh' mx='auto' spacing={0}>
           <Navbar />
-          <Box as='main' alignItems='start'>
-            <Component {...pageProps} />
-          </Box>
+          <AnimatePresence exitBeforeEnter>
+            <MotionBox
+              as='main'
+              animate='enter'
+              exit='exit'
+              flexGrow={1}
+              initial='initial'
+              key={router.route}
+              variants={{
+                initial: { opacity: 0, y: -80 },
+                enter: { opacity: 1, y: 0 },
+                exit: { opacity: 0, y: 80 },
+              }}
+            >
+              <Component {...pageProps} />
+            </MotionBox>
+          </AnimatePresence>
           <Footer />
         </Stack>
-
         <MobileDrawer />
       </ChakraProvider>
     </>
