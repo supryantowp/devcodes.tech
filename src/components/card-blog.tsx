@@ -37,7 +37,7 @@ const CardBlog = ({
   return (
     <SimpleGrid
       p={4}
-      columns={isFull ? 2 : 1}
+      columns={{ base: 1, md: isFull ? 2 : 1 }}
       spacing={4}
       _hover={{ background: 'navy.700' }}
       transition='background-color 150ms ease'

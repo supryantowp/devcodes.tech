@@ -15,6 +15,10 @@ const Blog = () => {
     token: process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN,
   })
 
+  const colspanStyle = {
+    base: 1,
+  }
+
   return (
     <>
       <NextSeo title='Blog' />
@@ -52,7 +56,13 @@ const Blog = () => {
         >
           {data &&
             data.allBlogs.map((b, i) => (
-              <GridItem colSpan={i >= 1 ? 2 : 6} key={i}>
+              <GridItem
+                colSpan={{
+                  base: 6,
+                  md: i >= 1 ? 2 : 6,
+                }}
+                key={i}
+              >
                 <CardBlog
                   isFull={i < 1}
                   slug={b.slug}
