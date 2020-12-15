@@ -37,7 +37,7 @@ const BlogDetail = ({ subscription }) => {
           borderRadius='md'
           bgColor='navy.800'
           spacing={16}
-          px={40}
+          px={{ base: 5, md: 40 }}
           py={8}
         >
           <Stack spacing={3}>
