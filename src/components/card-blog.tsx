@@ -8,8 +8,8 @@ import {
   Text,
 } from '@chakra-ui/react'
 import format from 'date-fns/format'
-import { Image, ResponsiveImageType } from 'react-datocms'
 import NextLink from 'next/link'
+import { Image, ResponsiveImageType } from 'react-datocms'
 
 import { Author } from '@/generated/types'
 
@@ -54,7 +54,7 @@ const CardBlog = ({
       />
       <NextLink href={`/blog/${slug}`} passHref>
         <Stack as='a' spacing={2} justify='center'>
-          <Text textTransform='uppercase' color='navy.300' fontSize='sm'>
+          <Text textTransform='uppercase' color='gray.500' fontSize='sm'>
             {tags}
           </Text>
           <Heading fontSize='2xl'>{title}</Heading>
@@ -70,7 +70,7 @@ const CardBlog = ({
             {subtitle}
           </Text>
           <HStack spacing={3}>
-            <Avatar src='/asldkals' name={author.name} size='sm' />
+            <Avatar src={author.avatar.url} name={author.name} size='sm' />
             <Box>
               <Text fontSize='md' fontWeight='bold'>
                 {author.name}

@@ -64,7 +64,7 @@ const Blog = () => {
                 key={i}
               >
                 <CardBlog
-                  isFull={i < 1}
+                  isFull={i < 1 ? true : false}
                   slug={b.slug}
                   title={b.title}
                   subtitle={b.subtitle}

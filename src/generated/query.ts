@@ -1,10 +1,10 @@
-import { RESPONSIVE_IMAGE_FRAGMENT } from '@/generated/fragment'
+import { responsiveImageFragment } from '@/generated/fragment'
 
 export const ProjectsQuery = `
   query AppQuery {
     allProjects: allProjects(first: $first, orderBy: createdAt_ASC) {
       coverImage {
-        ${RESPONSIVE_IMAGE_FRAGMENT}
+        ${responsiveImageFragment}
       }
       title
       url
@@ -18,7 +18,7 @@ export const QueryAllProject = `
     allProjects: allProjects(first: $first, orderBy: createdAt_ASC) {
       coverImage {
         responsiveImage {
-          ${RESPONSIVE_IMAGE_FRAGMENT}
+          ${responsiveImageFragment}
         }
       }
       title
@@ -39,7 +39,7 @@ export const QueryAllBlog = `
       date
       coverImage {
         responsiveImage {
-          ${RESPONSIVE_IMAGE_FRAGMENT}
+          ${responsiveImageFragment}
         }
       }
       author {

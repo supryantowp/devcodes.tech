@@ -1,4 +1,4 @@
-export const RESPONSIVE_IMAGE_FRAGMENT = `
+export const responsiveImageFragment = `
   aspectRatio
   height
   sizes
@@ -11,7 +11,7 @@ export const RESPONSIVE_IMAGE_FRAGMENT = `
   title
 `
 
-export const META_TAGS_FRAGMENT = `
+export const metaTagsFragment = `
   attributes
   content
   tag
