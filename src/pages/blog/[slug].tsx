@@ -30,46 +30,48 @@ const BlogDetail = ({ subscription }) => {
   return (
     <>
       <Head>{renderMetaTags(metaTags)}</Head>
-      <Stack
-        maxW='6xl'
-        mx='auto'
-        borderRadius='md'
-        bgColor='navy.800'
-        spacing={16}
-        px={40}
-        py={8}
-      >
-        <Stack spacing={3}>
-          <Stack spacing={2}>
-            <Text textTransform='uppercase' color='gray.500' fontSize='sm'>
-              {blog.tags}
-            </Text>
-            <Heading>{blog.title}</Heading>
-            <Text>{blog.subtitle}</Text>
-            <Divider border='2px' />
+      {blog && (
+        <Stack
+          maxW='6xl'
+          mx='auto'
+          borderRadius='md'
+          bgColor='navy.800'
+          spacing={16}
+          px={40}
+          py={8}
+        >
+          <Stack spacing={3}>
+            <Stack spacing={2}>
+              <Text textTransform='uppercase' color='gray.500' fontSize='sm'>
+                {blog.tags}
+              </Text>
+              <Heading>{blog.title}</Heading>
+              <Text>{blog.subtitle}</Text>
+              <Divider border='2px' />
+            </Stack>
+            <HStack spacing={3}>
+              <Avatar src={blog.author.avatar.url} name='udin' size='sm' />
+              <Box>
+                <Text fontSize='md' fontWeight='bold'>
+                  {blog.author.name}
+                </Text>
+                <Text fontSize='sm' fontWeight='light'>
+                  {format(new Date(blog.date), 'do MMM Y')}
+                </Text>
+              </Box>
+            </HStack>
           </Stack>
-          <HStack spacing={3}>
-            <Avatar src={blog.author.avatar.url} name='udin' size='sm' />
-            <Box>
-              <Text fontSize='md' fontWeight='bold'>
-                {blog.author.name}
-              </Text>
-              <Text fontSize='sm' fontWeight='light'>
-                {format(new Date(blog.date), 'do MMM Y')}
-              </Text>
-            </Box>
-          </HStack>
-        </Stack>
 
-        <DatoImage
-          fadeInDuration={1000}
-          data={blog.coverImage.responsiveImage}
-        />
+          <DatoImage
+            fadeInDuration={1000}
+            data={blog.coverImage.responsiveImage}
+          />
 
-        <Stack lineHeight='tall' spacing={8} wordBreak='break-word'>
-          <Markdown renderers={postRenderer} source={blog.content} />
+          <Stack lineHeight='tall' spacing={8} wordBreak='break-word'>
+            <Markdown renderers={postRenderer} source={blog.content} />
+          </Stack>
         </Stack>
-      </Stack>
+      )}
     </>
   )
 }
