@@ -5,7 +5,6 @@ const theme = extendTheme({
     global: {
       body: {
         backgroundColor: 'navy.900',
-        color: 'navy.50',
         lineHeight: 'base',
         transition: 'background-color 0.2s',
       },
@@ -21,16 +20,16 @@ const theme = extendTheme({
 
   colors: {
     navy: {
-      50: '#f6e7ff',
-      100: '#dbbbfa',
-      200: '#c28ef2',
-      300: '#a862eb',
-      400: '#9035e3',
-      500: '#761cca',
-      600: '#5c149e',
-      700: '#420d72',
-      800: '#270746',
-      900: '#10011c',
+      50: '#d6faff',
+      100: '#aaf1ff',
+      200: '#7aebff',
+      300: '#47e8ff',
+      400: '#1ae9ff',
+      500: '#00c1e6',
+      600: '#0089b4',
+      700: '#005a81',
+      800: '#00314f',
+      900: '#000f1e',
     },
   },
 
@@ -52,8 +51,8 @@ const theme = extendTheme({
   },
 
   fonts: {
-    body: 'Roboto',
-    heading: 'Kanit',
+    body: 'Merriweather',
+    heading: 'Roboto',
   },
 })
 

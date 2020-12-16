@@ -15,7 +15,6 @@ import * as React from 'react'
 
 import Snippet from '@/components/snippet'
 
-// https://github.com/rexxars/react-markdown/issues/404#issuecomment-604019030
 function slugifyChildren(children: React.ReactNode) {
   const flatten = (text: string, child: any) => {
     return typeof child === 'string'
@@ -90,7 +89,7 @@ export const postRenderer = {
 
   heading: function PostHeading({ level, children, ...props }) {
     const slug = slugifyChildren(children)
-    const sizes = ['2xl', 'xl', 'lg', 'md', 'sm', 'xs']
+    const sizes = ['xl', 'lg', 'md', 'sm', 'xs', 'xs']
 
     return (
       <Heading

@@ -1,18 +1,5 @@
 import { responsiveImageFragment } from '@/generated/fragment'
 
-export const ProjectsQuery = `
-  query AppQuery {
-    allProjects: allProjects(first: $first, orderBy: createdAt_ASC) {
-      coverImage {
-        ${responsiveImageFragment}
-      }
-      title
-      url
-      techStack
-    }
-  }
-`
-
 export const QueryAllProject = `
   query AppQuery($first: IntType) {
     allProjects: allProjects(first: $first, orderBy: createdAt_ASC) {
@@ -38,7 +25,7 @@ export const QueryAllBlog = `
       slug
       date
       coverImage {
-        responsiveImage {
+        responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000}) {
           ${responsiveImageFragment}
         }
       }

@@ -1,18 +1,18 @@
 html {
-  scrollbar-color: #9035e3 #270746;
+  scrollbar-color: #1ae9ff #00314f;
 }
 
 body {
-  background-color: #270746;
+  background-color: #00314f;
   overflow-x: hidden;
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: #761cca;
+  background-color: #1ae9ff;
 }
 
 html::-webkit-scrollbar {
-  background-color: #270746;
+  background-color: #00314f;
   width: 0.5rem;
 }
 

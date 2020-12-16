@@ -1,4 +1,4 @@
-import { Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
+import { Divider, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import { useQuerySubscription } from 'react-datocms'
 
@@ -14,10 +14,6 @@ const Blog = () => {
     query: QueryAllBlog,
     token: process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN,
   })
-
-  const colspanStyle = {
-    base: 1,
-  }
 
   return (
     <>
@@ -73,6 +69,7 @@ const Blog = () => {
                   date={b.date}
                   image={b.coverImage.responsiveImage}
                 />
+                {i < 1 ? <Divider /> : ''}
               </GridItem>
             ))}
         </Grid>

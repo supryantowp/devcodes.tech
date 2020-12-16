@@ -1,25 +1,26 @@
 import {
   Avatar,
-  HStack,
   Box,
   Divider,
   Heading,
+  HStack,
   Stack,
   Text,
-  Image,
 } from '@chakra-ui/react'
 import format from 'date-fns/format'
-import Markdown from 'react-markdown'
-import { postRenderer } from '@/lib/renderers'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { contentful, request } from '@/lib/datocms'
-import { metaTagsFragment, responsiveImageFragment } from '@/generated/fragment'
+import Head from 'next/head'
 import {
   Image as DatoImage,
-  useQuerySubscription,
   renderMetaTags,
+  useQuerySubscription,
 } from 'react-datocms'
-import Head from 'next/head'
+import Markdown from 'react-markdown'
+
+import { metaTagsFragment, responsiveImageFragment } from '@/generated/fragment'
+import { contentful, request } from '@/lib/datocms'
+import { postRenderer } from '@/lib/renderers'
+import CardAvatar from '@/components/card-avatar'
 
 const BlogDetail = ({ subscription }) => {
   const {
@@ -49,17 +50,7 @@ const BlogDetail = ({ subscription }) => {
               <Text>{blog.subtitle}</Text>
               <Divider border='2px' />
             </Stack>
-            <HStack spacing={3}>
-              <Avatar src={blog.author.avatar.url} name='udin' size='sm' />
-              <Box>
-                <Text fontSize='md' fontWeight='bold'>
-                  {blog.author.name}
-                </Text>
-                <Text fontSize='sm' fontWeight='light'>
-                  {format(new Date(blog.date), 'do MMM Y')}
-                </Text>
-              </Box>
-            </HStack>
+            <CardAvatar author={blog.author} date={blog.date} />
           </Stack>
 
           <DatoImage
@@ -67,7 +58,12 @@ const BlogDetail = ({ subscription }) => {
             data={blog.coverImage.responsiveImage}
           />
 
-          <Stack lineHeight='tall' spacing={8} wordBreak='break-word'>
+          <Stack
+            fontSize={{ md: 'lg' }}
+            lineHeight='tall'
+            spacing={8}
+            wordBreak='break-word'
+          >
             <Markdown renderers={postRenderer} source={blog.content} />
           </Stack>
         </Stack>

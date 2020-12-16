@@ -1,17 +1,10 @@
-import {
-  Avatar,
-  Box,
-  Heading,
-  HStack,
-  SimpleGrid,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
-import format from 'date-fns/format'
+import { Heading, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { Image, ResponsiveImageType } from 'react-datocms'
 
 import { Author } from '@/generated/types'
+
+import CardAvatar from './card-avatar'
 
 interface CardBlog {
   isFull?: boolean
@@ -47,7 +40,6 @@ const CardBlog = ({
       <Image
         data={image}
         style={{
-          maxHeight: 'auto',
           objectFit: 'cover',
           objectPosition: 'center',
         }}
@@ -59,27 +51,17 @@ const CardBlog = ({
           </Text>
           <Heading fontSize='2xl'>{title}</Heading>
           <Text
-            color='navy.200'
+            color='gray.500'
             style={{
               display: '-webkit-box',
-              WebkitLineClamp: 2,
+              WebkitLineClamp: 1,
               WebkitBoxOrient: 'vertical',
               overflow: 'hidden',
             }}
           >
             {subtitle}
           </Text>
-          <HStack spacing={3}>
-            <Avatar src={author.avatar.url} name={author.name} size='sm' />
-            <Box>
-              <Text fontSize='md' fontWeight='bold'>
-                {author.name}
-              </Text>
-              <Text fontSize='sm' fontWeight='light'>
-                {format(new Date(date), 'do MMM Y')}
-              </Text>
-            </Box>
-          </HStack>
+          <CardAvatar author={author} date={date} />
         </Stack>
       </NextLink>
     </SimpleGrid>
