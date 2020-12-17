@@ -29,7 +29,11 @@ const Author = ({ subscription }) => {
     <>
       <Head>{renderMetaTags(metaTags)}</Head>
       <Stack borderRadius='md' bgColor='navy.800' spacing={8} p={8}>
-        <Stack align='center' direction='row' spacing={6}>
+        <Stack
+          align='center'
+          direction={{ base: 'column', md: 'row' }}
+          spacing={6}
+        >
           <Box
             display='grid'
             placeItems='center'

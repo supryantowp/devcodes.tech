@@ -18,10 +18,8 @@ const CardAvatar = (props: CardAvatarProps) => {
     <HStack spacing={3}>
       <Avatar src={avatar.url} name={name} size='sm' />
       <Box>
-        <NextLink href={`/author/${id}`}>
-          <Link fontSize='md' fontWeight='bold' href={`/author/${id}`}>
-            {name}
-          </Link>
+        <NextLink href={`/author/${id}`} passHref>
+          <Link href={`author/${id}`}>{name}</Link>
         </NextLink>
         <Text fontSize='sm' fontWeight='light'>
           {format(new Date(date), 'do MMM Y')}

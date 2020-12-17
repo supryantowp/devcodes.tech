@@ -36,7 +36,7 @@ const CardBlog = (props: CardBlogProps) => {
         }}
       />
       <NextLink href={`/blog/${slug}`} passHref>
-        <Stack as='a' spacing={2} justify='center'>
+        <Stack as='a' href={`/blog/${slug}`} spacing={2} justify='center'>
           <Text textTransform='uppercase' color='gray.500' fontSize='sm'>
             {tags}
           </Text>
@@ -52,9 +52,9 @@ const CardBlog = (props: CardBlogProps) => {
           >
             {subtitle}
           </Text>
-          <CardAvatar author={author} date={date} />
         </Stack>
       </NextLink>
+      <CardAvatar author={author} date={date} />
     </SimpleGrid>
   )
 }
