@@ -1,12 +1,11 @@
 // eslint-disable-next-line no-undef
 module.exports = {
   title: 'Devcodes',
-  description:
-    'Komunitas Programmer Dari Jurusan Software Engineering Sekolah Menengah Kejuruan 1 Ciamis !',
+  description: 'rekayasa perangkat lunak rpl smkn 1 ciamis (SERVER)',
   url: 'https://devcodes.tech',
   socials: {
     GitHub: 'https://github.com/devcode',
-    Twitter: 'https://twitter.com/devcode',
+    Instagram: 'http://instagram.com/official_server/',
   },
   themeColor: '#1a202c',
 }
