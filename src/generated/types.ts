@@ -1,8 +1,20 @@
-import { ResponsiveImageType } from 'react-datocms'
+import {
+  ResponsiveImageType,
+  ToMetaTagsType,
+  SeoMetaTagType,
+} from 'react-datocms'
 
 export type QueryResponseType = {
   allProjects: Project[]
   allBlogs: Blog[]
+  authors: Author[]
+  author: Author
+  site: Site
+  blog: Blog
+}
+
+export type Site = {
+  favicon: SeoMetaTagType
 }
 
 export type QueryVariables = {
@@ -32,12 +44,19 @@ export type Blog = {
   coverImage: {
     responsiveImage: ResponsiveImageType
   }
+  seo: ToMetaTagsType
 }
 
 export type Author = {
+  id: string
   name: string
+  bio: string
+  username: string
+  website: string
+  github: string
   avatar: {
     url: string
     responsiveImage: ResponsiveImageType
   }
+  seo: ToMetaTagsType
 }

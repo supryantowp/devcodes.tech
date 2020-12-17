@@ -2,31 +2,22 @@ import { Heading, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { Image, ResponsiveImageType } from 'react-datocms'
 
-import { Author } from '@/generated/types'
+import { Author, Blog } from '@/generated/types'
 
 import CardAvatar from './card-avatar'
 
-interface CardBlog {
-  isFull?: boolean
-  title: string
-  slug: string
-  subtitle: string
-  tags: string
+interface CardBlogProps {
+  isFull: boolean
+  blog: Blog
   author: Author
-  date: Date
-  image: ResponsiveImageType
 }
 
-const CardBlog = ({
-  isFull,
-  title,
-  tags,
-  slug,
-  subtitle,
-  author,
-  date,
-  image,
-}: CardBlog) => {
+const CardBlog = (props: CardBlogProps) => {
+  const {
+    isFull,
+    blog: { coverImage, slug, tags, title, subtitle, author, date },
+  } = props
+
   return (
     <SimpleGrid
       p={4}
@@ -38,7 +29,7 @@ const CardBlog = ({
       borderRadius='md'
     >
       <Image
-        data={image}
+        data={coverImage.responsiveImage}
         style={{
           objectFit: 'cover',
           objectPosition: 'center',

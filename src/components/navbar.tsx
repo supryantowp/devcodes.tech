@@ -11,13 +11,10 @@ const Navbar = () => {
 
   return (
     <HStack
-      bg='navy.800'
-      borderBottom='2px'
-      borderColor='navy.300'
+      px={{ base: 5, md: 10 }}
       as='nav'
       fontSize='md'
-      px={{ base: 5, md: '7rem' }}
-      py={2}
+      py={4}
       spacing={8}
       mb={8}
     >

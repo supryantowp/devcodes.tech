@@ -1,13 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Divider,
-  Heading,
-  HStack,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
-import format from 'date-fns/format'
+import { Divider, Heading, Stack, Text } from '@chakra-ui/react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import {
@@ -17,30 +8,23 @@ import {
 } from 'react-datocms'
 import Markdown from 'react-markdown'
 
-import { metaTagsFragment, responsiveImageFragment } from '@/generated/fragment'
 import { contentful, request } from '@/lib/datocms'
-import { postRenderer } from '@/lib/renderers'
 import CardAvatar from '@/components/card-avatar'
+import { postRenderer } from '@/lib/renderers'
+import { QueryResponseType, QueryVariables } from '@/generated/types'
+import { QueryBlogBySlug } from '@/generated/query'
 
 const BlogDetail = ({ subscription }) => {
   const {
     data: { site, blog },
-  } = useQuerySubscription(subscription)
+  } = useQuerySubscription<QueryResponseType, QueryVariables>(subscription)
 
   const metaTags = blog.seo.concat(site.favicon)
   return (
     <>
       <Head>{renderMetaTags(metaTags)}</Head>
       {blog && (
-        <Stack
-          maxW='6xl'
-          mx='auto'
-          borderRadius='md'
-          bgColor='navy.800'
-          spacing={16}
-          px={{ base: 5, md: 40 }}
-          py={8}
-        >
+        <Stack borderRadius='md' bgColor='navy.800' spacing={8} p={8}>
           <Stack spacing={3}>
             <Stack spacing={2}>
               <Text textTransform='uppercase' color='gray.500' fontSize='sm'>
@@ -64,7 +48,11 @@ const BlogDetail = ({ subscription }) => {
             spacing={8}
             wordBreak='break-word'
           >
-            <Markdown renderers={postRenderer} source={blog.content} />
+            <Markdown
+              renderers={postRenderer}
+              source={blog.content}
+              escapeHtml={false}
+            />
           </Stack>
         </Stack>
       )}
@@ -77,41 +65,7 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }) => {
   const graphqlRequest = {
-    query: `
-      query BlogBySlug($slug: String) {
-        site: _site {
-          favicon: faviconMetaTags {
-            ${metaTagsFragment}
-          }
-        }
-        blog(filter: {slug: {eq: $slug}}) {
-          coverImage {
-            responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000}) {
-              ${responsiveImageFragment}
-            }
-          }
-          seo: _seoMetaTags {
-            ${metaTagsFragment}
-          }
-          title
-          slug
-          subtitle
-          tags
-          author {
-            id
-            name
-            avatar {
-              url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100})
-            }
-          }
-          date
-          ogImage: coverImage {
-            url(imgixParams: {fm: jpg, fit:crop, w: 2000, h:1000})
-          }
-          content
-        }
-      }
-    `,
+    query: QueryBlogBySlug,
     variables: {
       slug: params.slug,
     },
@@ -134,16 +88,16 @@ export const getStaticProps: GetStaticProps = async ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await contentful().request(`
+  const data = await contentful().request<QueryResponseType, QueryVariables>(`
     {
-      blogs: allBlogs(orderBy: createdAt_DESC) {
+      allBlogs: allBlogs(orderBy: createdAt_DESC) {
         slug
       }
     }
   `)
 
   return {
-    paths: data.blogs.map((blog) => `/blog/${blog.slug}`) || [],
+    paths: data.allBlogs.map((blog) => `/blog/${blog.slug}`) || [],
     fallback: false,
   }
 }

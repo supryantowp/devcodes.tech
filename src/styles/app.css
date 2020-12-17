@@ -1,4 +1,4 @@
-html {
+/* html {
   scrollbar-color: #1ae9ff #00314f;
 }
 
@@ -14,7 +14,7 @@ html::-webkit-scrollbar-thumb {
 html::-webkit-scrollbar {
   background-color: #00314f;
   width: 0.5rem;
-}
+} */
 
 .hero-image {
   border-radius: 100%;

@@ -60,7 +60,7 @@ export default function MyApp(props: AppProps) {
       />
 
       <ChakraProvider theme={theme}>
-        <Stack minH='100vh' mx='auto' spacing={0}>
+        <Stack maxW='6xl' minH='100vh' mx='auto' spacing={0}>
           <Navbar />
           <AnimatePresence exitBeforeEnter>
             <MotionBox

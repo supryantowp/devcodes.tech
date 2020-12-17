@@ -2,7 +2,7 @@ import { Heading, Stack, Text, Wrap } from '@chakra-ui/react'
 import { Image as DatoImage, ResponsiveImageType } from 'react-datocms'
 
 interface CardProjectProps {
-  image: ResponsiveImageType
+  image?: ResponsiveImageType
   title: string
   url: string
   techStack: string

@@ -1,78 +1,31 @@
-import { Divider, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
+import { Stack, Skeleton } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import { useQuerySubscription } from 'react-datocms'
 
-import CardBlog from '@/components/card-blog'
 import { QueryAllBlog } from '@/generated/query'
 import { QueryResponseType, QueryVariables } from '@/generated/types'
+import BlogList from '@/components/blog-list'
+import TitleSeperator from '@/components/title-seperator'
+
+const meta = {
+  title: 'Blog tulisan',
+  description:
+    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit, amet.',
+}
 
 const Blog = () => {
-  const { data, error } = useQuerySubscription<
-    QueryResponseType,
-    QueryVariables
-  >({
+  const { data } = useQuerySubscription<QueryResponseType, QueryVariables>({
     query: QueryAllBlog,
     token: process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN,
   })
 
   return (
     <>
-      <NextSeo title='Blog' />
-
-      {error && (
-        <div>
-          <h1>{error.code}</h1>
-          {error.message}
-          {error.response && (
-            <pre>{JSON.stringify(error.response, null, 2)}</pre>
-          )}
-        </div>
-      )}
-
-      <Stack
-        maxW='6xl'
-        mx='auto'
-        borderRadius='md'
-        bgColor='navy.800'
-        spacing={8}
-        p={8}
-      >
-        <Stack>
-          <Heading>Blog Tulisan</Heading>
-          <Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-            libero.
-          </Text>
-        </Stack>
-
-        <Grid
-          templateRows='repeat(1 , minmax(1fr))'
-          templateColumns='repeat(6,  1fr)'
-          gap={4}
-        >
-          {data &&
-            data.allBlogs.map((b, i) => (
-              <GridItem
-                colSpan={{
-                  base: 6,
-                  md: i >= 1 ? 2 : 6,
-                }}
-                key={i}
-              >
-                <CardBlog
-                  isFull={i < 1 ? true : false}
-                  slug={b.slug}
-                  title={b.title}
-                  subtitle={b.subtitle}
-                  tags={b.tags}
-                  author={b.author}
-                  date={b.date}
-                  image={b.coverImage.responsiveImage}
-                />
-                {i < 1 ? <Divider /> : ''}
-              </GridItem>
-            ))}
-        </Grid>
+      <Stack borderRadius='md' bgColor='navy.800' spacing={4} p={8}>
+        <NextSeo {...meta} />
+        <TitleSeperator {...meta} />
+        {!data && <Skeleton h={{ base: '3xs', sm: '2xs', lg: 'xs' }} />}
+        {data && <BlogList blogs={data?.allBlogs} />}
       </Stack>
     </>
   )

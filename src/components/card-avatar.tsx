@@ -1,7 +1,8 @@
-import { Avatar, Box, Divider, HStack, Text, Tooltip } from '@chakra-ui/react'
+import { Avatar, Box, HStack, Link, Text } from '@chakra-ui/react'
 import format from 'date-fns/format'
+import NextLink from 'next/link'
 
-import { Author } from '@/generated/types'
+import type { Author } from '@/generated/types'
 
 interface CardAvatarProps {
   author: Author
@@ -10,16 +11,18 @@ interface CardAvatarProps {
 
 const CardAvatar = (props: CardAvatarProps) => {
   const {
-    author: { name, avatar },
+    author: { name, avatar, id },
     date,
   } = props
   return (
     <HStack spacing={3}>
       <Avatar src={avatar.url} name={name} size='sm' />
       <Box>
-        <Text fontSize='md' fontWeight='bold'>
-          {name}
-        </Text>
+        <NextLink href={`/author/${id}`}>
+          <Link fontSize='md' fontWeight='bold' href={`/author/${id}`}>
+            {name}
+          </Link>
+        </NextLink>
         <Text fontSize='sm' fontWeight='light'>
           {format(new Date(date), 'do MMM Y')}
         </Text>
