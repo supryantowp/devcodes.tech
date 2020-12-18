@@ -1,6 +1,6 @@
 import { Heading, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { Image, ResponsiveImageType } from 'react-datocms'
+import { Image } from 'react-datocms'
 
 import { Author, Blog } from '@/generated/types'
 
@@ -23,7 +23,7 @@ const CardBlog = (props: CardBlogProps) => {
       p={4}
       columns={{ base: 1, md: isFull ? 2 : 1 }}
       spacing={4}
-      _hover={{ background: 'navy.700' }}
+      _hover={{ bgColor: 'whiteAlpha.100' }}
       transition='background-color 150ms ease'
       role='group'
       borderRadius='md'
@@ -52,9 +52,9 @@ const CardBlog = (props: CardBlogProps) => {
           >
             {subtitle}
           </Text>
+          <CardAvatar author={author} date={date} />
         </Stack>
       </NextLink>
-      <CardAvatar author={author} date={date} />
     </SimpleGrid>
   )
 }

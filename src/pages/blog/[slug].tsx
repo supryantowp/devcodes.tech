@@ -8,11 +8,11 @@ import {
 } from 'react-datocms'
 import Markdown from 'react-markdown'
 
-import { contentful, request } from '@/lib/datocms'
 import CardAvatar from '@/components/card-avatar'
-import { postRenderer } from '@/lib/renderers'
-import { QueryResponseType, QueryVariables } from '@/generated/types'
 import { QueryBlogBySlug } from '@/generated/query'
+import { QueryResponseType, QueryVariables } from '@/generated/types'
+import { contentful, request } from '@/lib/datocms'
+import { postRenderer } from '@/lib/renderers'
 
 const BlogDetail = ({ subscription }) => {
   const {
@@ -48,11 +48,7 @@ const BlogDetail = ({ subscription }) => {
             spacing={8}
             wordBreak='break-word'
           >
-            <Markdown
-              renderers={postRenderer}
-              source={blog.content}
-              escapeHtml={false}
-            />
+            <Markdown renderers={postRenderer} source={blog.content} />
           </Stack>
         </Stack>
       )}

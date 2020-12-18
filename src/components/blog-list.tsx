@@ -1,4 +1,5 @@
 import { Divider, Grid, GridItem } from '@chakra-ui/react'
+
 import CardBlog from '@/components/card-blog'
 import { Blog } from '@/generated/types'
 
